@@ -1,9 +1,11 @@
-function isAnagram(s, t) {
-  if (s.length !== t.length) return false;
-  const count = Array(26).fill(0);
-  for (let i = 0; i < s.length; i++) {
-    count[s.charCodeAt(i) - 97]++;
-    count[t.charCodeAt(i) - 97]--;
+function searchInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] < target) left = mid + 1;
+    else right = mid - 1;
   }
-  return count.every((c) => c === 0);
+  return left;
 }
